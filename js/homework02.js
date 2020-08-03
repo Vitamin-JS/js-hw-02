@@ -11,21 +11,21 @@
 
 // Используйте вспомогательную переменную result для добавления(конкатенации) строк внутри цикла for
 
-const getItemsString = function (array) {
-  "use strict";
-  // Write code under this line
-  let result = "";
+//     const getItemsString = function (array) {
+//       "use strict";
+//       // Write code under this line
+//       let result = "";
 
-  for (let i = 0; i <= array.length - 1; i += 1) {
-    result = result + `${i + 1} - ${array[i]}\n`;
-    // return result; остановит выполнение ф-ции после 1й итерации
-  }
-  console.log(result);
+//       for (let i = 0; i <= array.length - 1; i += 1) {
+//         result = result + `${i + 1} - ${array[i]}\n`;
+//        // return result; остановит выполнение ф-ции после 1й итерации
+//       }
+//       console.log(result);
 
-  return result;
-};
+//       return result;
+//     };
 
-getItemsString(["Mango", "Poly", "Ajax", "Lux", "Jay", "Kong"]);
+//     getItemsString(["Mango", "Poly", "Ajax", "Lux", "Jay", "Kong"]);
 
 /* Пример
 '1 - Mango
