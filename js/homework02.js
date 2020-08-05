@@ -83,14 +83,10 @@
 //   return longestWord;
 // }
 
-// console.log(findLongestWord("The quick brown fox jumped over the lazy dog"));
-// 'jumped'
-
-// console.log(findLongestWord("Google do a roll"));
-// 'Google'
-
-// console.log(findLongestWord("May the force be with you"));
-// 'force'
+// console.log(findLongestWord("The quick brown fox jumped over the lazy dog")); // 'jumped'
+// console.log(findLongestWord("Google do a roll"));  // 'Google'
+// console.log(findLongestWord("May the force be with you"));  // 'force'
+//
 
 // =================  ЗАДАЧА 2-4 =================================================
 // ===============================================================================
@@ -124,6 +120,7 @@
 
 // console.log(formatString("Vestibulum facilisis, purus nec pulvinar iaculis.", 30));
 // 'Vestibulum facilisis, purus ne...'
+//
 
 // =================  ЗАДАЧА 2-5 =================================================
 // ===============================================================================
@@ -136,6 +133,7 @@
 // запрещенных слов нет функция возвращает false.Слова в строке могут быть в произвольном регистре.
 
 // -----------------    Решение   --------------------------------------------------
+//
 
 // function checkForSpam(str) {
 //   "use strict";
@@ -153,9 +151,77 @@
 // }
 
 // console.log(checkForSpam("Latest technology news")); // false
-
 // console.log(checkForSpam("JavaScript weekly newsletter")); // false
-
-//console.log(checkForSpam("Get best sale offers now!")); // true
-
+// console.log(checkForSpam("Get best sale offers now!")); // true
 // console.log(checkForSpam("[SPAM] How to earn fast money?")); // true
+//
+//
+
+// =================  ЗАДАЧА 2-6 =================================================
+// ===============================================================================
+
+// Создание нового массива на основе преобразования данных из старого массива
+// Напиши функцию mapArray(array), принимающую 1 параметр array - массив чисел.
+// Функция создает новый массив numbers размером в длину массива array и заполняет его числами
+// из массива array умноженными на 10. Для перебора массива и добавления новых значений используй цикл for.
+// По завершению перебора массива array возвращается массив numbers.
+//
+
+// -----------------    Решение   --------------------------------------------------
+//
+// function mapArray(array) {
+//   "use strict";
+//   const numbers = new Array(array.length);
+//   for (let i = 0; i < array.length; i += 1) {
+//     // Write code under this line
+//     numbers[i] = array[i] * 10;
+//   }
+//   return numbers;
+// }
+
+// console.log(mapArray([-2, 0, 2])); // [-20, 0, 20]
+// console.log(mapArray([-2.5, 0, 2.5])); // [-25, 0, 25]
+//
+//
+
+// =================  ЗАДАЧА 2-7 =================================================
+// ===============================================================================
+//
+// Создание нового массива на основе отбора из исходного массива
+// Напиши функцию filterArray(array), принимающую 1 параметр array - массив.
+// Функция проверяет каждое значение массива - является ли значение конечным числом(Number.isFinite).
+// Для проверки используй цикл for.Числа добавляются в новый массив numbers с помощью метода push,
+//   а не числа - игнорируются.
+// По завершению проверки массива array возвращается массив numbers.
+//
+
+// -----------------    Решение   --------------------------------------------------
+//
+
+// function filterArray(array) {
+//   "use strict";
+//   const numbers = [];
+//   for (let i = 0; i < array.length; i += 1) {
+//     // Write code under this line
+//     if (Number.isFinite(array[i])) {
+//       numbers.push(array[i]);
+//     }
+//   }
+//   return numbers;
+// }
+
+//console.log(filterArray([-2, 0, 2]));   // [-2, 0, 2]
+//console.log(filterArray([1, NaN, Infinity]));  // [1]
+// console.log(filterArray([0, -0, 100, "100"]));  // [0, 0, 100]
+//console.log(filterArray([undefined, false, null, [], 1]));   // [1]
+//console.log(filterArray([{}, () => {}, 2]));   // [2]
+//
+
+// =================  ЗАДАЧА 2-8 =================================================
+// ===============================================================================
+//
+// Вычисление суммы массива
+// Напиши функцию reduceArray(array), которая принимает числовой массив array.Если массив array не пустой,
+// необходимо посчитать сумму всех элементов массива, используя цикл for.
+// Для подсчета суммы используй переменную total.
+// Функция должна возвращать 0 если массив пустой и значение total в противном случае.
