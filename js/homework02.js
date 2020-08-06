@@ -48,9 +48,9 @@
 // for in, forEach или функциональных методов.
 
 // -----------------    Решение   --------------------------------------------------
-//      const calculateEngravingPrice = (message = "", pricePerWord = 0) => pricePerWord * message.split(" ").length;
+//const calculateEngravingPrice = (message = "", pricePerWord = 0) => pricePerWord * message.split(" ").length;
 
-//      console.log(calculateEngravingPrice('Proin sociis natoque et magnis parturient montes mus', 10)); // 80
+//console.log(calculateEngravingPrice('Proin sociis natoque et magnis parturient montes mus', 10)); // 80
 
 //console.log(calculateEngravingPrice('Proin sociis natoque et magnis parturient montes mus', 20)); // 160
 
@@ -225,3 +225,139 @@
 // необходимо посчитать сумму всех элементов массива, используя цикл for.
 // Для подсчета суммы используй переменную total.
 // Функция должна возвращать 0 если массив пустой и значение total в противном случае.
+//
+
+// -----------------    Решение   --------------------------------------------------
+//
+// function reduceArray(array) {
+//   "use strict";
+//   let total = 0;
+
+// Write code under this line
+// for (let i = 0; i < array.length; i += 1) {
+//   if (array[i] !== 0) {
+//     total = total + array[i];
+//   }
+// }
+
+// 2й вариант
+// for (const number of array) {
+//   total += number;
+// }
+
+// return total;
+// }
+//
+
+// console.log(reduceArray([1, 2, 3])); // 6
+// console.log(reduceArray([-2, 0, 2])); // 0
+// console.log(reduceArray([1, 2, 2.5])); // 5.5
+// console.log(reduceArray([0, 0, 0]));
+//
+//
+
+// =================  ЗАДАЧА 2-9 =================================================
+// ===============================================================================
+//
+// Есть массив logins с логинами пользователей.Напиши скрипт добавления логина в массив logins.
+// Добавляемый логин должен:
+
+// проходить проверку на длину от 4 до 16 - ти символов включительно
+// быть уникален, то есть отсутствовать в массиве logins
+// Разбей задачу на подзадачи с помощью функций.
+// Проверку на отсутствие аргументов или на правильный тип аргументов делать не нужно.
+
+// +++++     Напиши функцию isLoginValid(login), в которой проверь количество символов параметра login и
+// верни true или false в зависимости от того, попадает ли длина параметра в заданный диапазон
+// от 4 - х до 16 - ти символов включительно.
+
+// +++++     Напиши функцию isLoginUnique(allLogins, login), которая принимает список всех логинов и добавляемый логин
+// как параметры и проверяет наличие login в массиве allLogins, возвращая true если такого логина еще нет
+// и false если логин уже используется.
+
+// Напиши функцию addLogin(allLogins, login) которая:
+
+// Принимает новый логин и массив всех логинов как параметры
+// Проверяет валидность логина используя вспомогательную функцию isLoginValid
+//      Если логин не валиден, прекратить исполнение функции addLogin и вернуть строку
+//     'Ошибка! Логин должен быть от 4 до 16 символов'
+
+// Если логин валиден, функция addLogin проверяет уникальность логина с помощью функции isLoginUnique
+// Если isLoginUnique вернет false, тогда addLogin не добавляет логин в массив и возвращает строку
+// 'Такой логин уже используется!'
+// Если isLoginUnique вернет true, addLogin добавляет новый логин в logins и возвращает строку
+// 'Логин успешно добавлен!'
+//
+
+function isLoginValid(login, min = 4, max = 16) {
+  // Write code under this line
+  let isLoginValid = false;
+  if (login.length >= min && login.length <= max) {
+    isLoginValid = true;
+  }
+  return isLoginValid;
+}
+
+// console.log(isLoginValid("123456789"));
+
+// const logins = ["Mango", "robotGoogles", "Poly", "Aj4x1sBozz", "qwerty123"];
+
+function isLoginUnique(allLogins, login) {
+  "use strict";
+  // Write code under this line
+  let isLoginUnique = true;
+
+  for (const number of allLogins) {
+    if (login === number) {
+      isLoginUnique = false;
+    }
+  }
+
+  return isLoginUnique;
+}
+
+// console.log(isLoginUnique(logins, "qwerty123"));
+
+function addLogin(allLogins, login) {
+  "use strict";
+  const SUCCESS = "Логин успешно добавлен!";
+  const REFUSAL = "Такой логин уже используется!";
+  const ERROR = "Ошибка! Логин должен быть размером от 4 до 16 символов";
+  let message;
+  // Write code under this line
+  if (isLoginValid(login)) {
+  } else {
+    message = ERROR;
+    console.log(message);
+    return;
+  }
+
+  if (isLoginUnique(allLogins, login)) {
+    allLogins.push(login);
+    message = SUCCESS;
+    console.log(message);
+  } else {
+    message = REFUSAL;
+    console.log(message);
+  }
+
+  return allLogins;
+}
+
+const logins = ["Mango", "robotGoogles", "Poly", "Aj4x1sBozz", "qwerty123"];
+
+//console.log(addLogin(logins, "Ajax"));
+// 'Логин успешно добавлен!'
+
+//console.log(addLogin(logins, "robotGoogles"));
+// 'Такой логин уже используется!'
+
+//console.log(addLogin(logins, "Zod"));
+// 'Ошибка! Логин должен быть от 4 до 16 символов'
+
+// console.log(addLogin(logins, "jqueryisextremelyfast"));
+// 'Ошибка! Логин должен быть от 4 до 16 символов'
+
+// const logins = ["1234", "12345"];
+// console.log(addLogin(logins, "789"));
+// 'Ошибка! Логин должен быть от 4 до 16 символов'
