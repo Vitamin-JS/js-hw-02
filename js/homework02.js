@@ -388,3 +388,32 @@
 // const logins = ["1234", "12345"];
 // console.log(addLogin(logins, "789"));
 // 'Ошибка! Логин должен быть от 4 до 16 символов'
+
+// ================Более короткое РЕШЕНИЕ Задачи 2-9========================================
+// =========================================================================================
+
+function isLoginValid(login, min = 4, max = 16) {
+  return login.length >= min && login.length <= max;
+}
+function isLoginUnique(allLogins, login) {
+  // Write code under this line
+  return !allLogins.includes(login);
+}
+function addLogin(allLogins, login) {
+  const SUCCESS = "Логин успешно добавлен!";
+  const REFUSAL = "Такой логин уже используется!";
+  const ERROR = "Ошибка! Логин должен быть размером от 4 до 16 символов";
+  let message;
+  // Write code under this line
+  if (!isLoginValid(login)) {
+    message = ERROR;
+    return message;
+  } else if (!isLoginUnique(allLogins, login)) {
+    message = REFUSAL;
+    return message;
+  } else {
+    allLogins.push(login);
+    message = SUCCESS;
+    return message;
+  }
+}
